@@ -73,6 +73,7 @@ namespace ConsoleApp1
 ## Detailed Documentation
 
 #### WebServer
+**Namespace: SimpleWebServer**
 
 <br>
 
@@ -128,13 +129,47 @@ server.AddController<T>(PreExecuteControllerMethod PreExecute = null);
   <br>
 * `WebServer.PreExecuteControllerMethod`: This method will be executed before the controller methods to handle bulk authentication/authorization. If it returns true, the specified controller method will be executed; otherwise, the specified controller method won't be executed.
   ***INPUT PARAMETER:*** HttpListenerContext
-  ***RETURNS:*** BOOL
+  ***MUST RETURN:*** BOOL
   <br>
 
 #### Attributes
+**Namespace: SimpleWebServer.Attributes**
 
 ```csharp
 [WebPath(string Path, HttpMethods allowedMethods = HttpMethods.ALLOW_ALL)]
 ```
-Use this attribute on Controller Methods inside Control Classes to specify the path and HttpMethods
-[linhgjhgk](#webserver)
+
+Use this attribute on Controller Methods inside Controller Classes to specify the path and HttpMethods.
+
+* ***string Path:*** Path of the endpoint (asterisk (*) wildcard is supported) [Examples: "/", "/index", "/api/users", "/assets/*", "/users/modify/*"]
+* ***HttpMethods allowedMethods (Optional):*** Allowed HTTP Methods, ALLOW_ALL by default (Can be stacked using *bitwise or* (the | character))
+<br>
+
+#### Extensions
+**Namespace: SimpleWebServer.Extensions**
+
+```csharp
+HttpListenerResponse.CreateHTMLResponse(string htmlContent, int code = 200, Dictionary<string, string> additionalHeaders = null, string charset = "utf-8");
+```
+Creates an HTML response to the incoming request
+
+* ***string htmlContent:*** HTML content in string format
+* ***int code (Optional):*** HTTP Status Code, 200 [OK] by default
+* ***Dictionary<string, string> additionalHeaders (Optional):*** Additional HTTP headers, none by default
+* ***string charset (Optional)*** HTTP Charset, UTF-8 by default
+  <br>
+* ***RETURNS: True if the response creation is successful; otherwise, false. (bool)***
+  <br>
+
+```csharp
+HttpListenerResponse.CreateStringResponse(string content, int code = 200, Dictionary<string, string> additionalHeaders = null, string charset = "utf-8");
+```
+Creates a simple string response to the incoming request
+
+* ***string content:*** String Content
+* ***int code (Optional):*** HTTP Status Code, 200 [OK] by default
+* ***Dictionary<string, string> additionalHeaders (Optional):*** Additional HTTP headers, none by default
+* ***string charset (Optional):*** HTTP Charset, UTF-8 by default
+  <br>
+* ***RETURNS: True if the response creation is successful; otherwise, false. (bool)***
+  <br>
