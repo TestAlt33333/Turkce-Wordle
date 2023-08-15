@@ -72,7 +72,7 @@ namespace ConsoleApp1
 
 ## Detailed Documentation
 
-#### WebServer
+### WebServer
 **Namespace: SimpleWebServer**
 
 <br>
@@ -115,7 +115,7 @@ server.AddController<T>(PreExecuteControllerMethod PreExecute = null);
 * ***RETURNS: Added endpoint count (int)***
   <br>
 
-##### WebServer Events
+#### WebServer Events
 
 * `WebServer.On404NotFound`: This event that will be invoked when a user sends a request to an undefined path. Use this event to create custom 405 response.
   <br>
@@ -131,11 +131,11 @@ server.AddController<T>(PreExecuteControllerMethod PreExecute = null);
 * `WebServer.PreExecuteControllerMethod`: This method will be executed before the controller methods to handle bulk authentication/authorization. If it returns true, the specified controller method will be executed; otherwise, the specified controller method won't be executed.
 
   ***INPUT PARAMETER:*** HttpListenerContext
-  
+
   ***MUST RETURN:*** BOOL
   <br>
 
-#### Attributes
+### Attributes
 **Namespace: SimpleWebServer.Attributes**
 
 ```csharp
@@ -148,7 +148,7 @@ Use this attribute on Controller Methods inside Controller Classes to specify th
 * ***HttpMethods allowedMethods (Optional):*** Allowed HTTP Methods, ALLOW_ALL by default (Can be stacked using *bitwise or* (the | character))
 <br>
 
-#### Extensions
+### Extensions
 **Namespace: SimpleWebServer.Extensions**
 
 ```csharp
