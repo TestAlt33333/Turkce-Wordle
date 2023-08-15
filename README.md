@@ -3,7 +3,7 @@
 Simple Web Server for C#
 
 [![NuGet](https://img.shields.io/nuget/v/SimpleWebServer.svg?label=NuGet)](https://nuget.org/packages/SimpleWebServer)
-()
+
 **Contact me from discord for additional help & suggestions**
 
 **Discord: borasy**
@@ -128,7 +128,8 @@ server.AddController<T>(PreExecuteControllerMethod PreExecute = null);
 
   ***INPUT PARAMETER:*** HttpListenerContext
   <br>
-  
+  <br>
+
 * `WebServer.PreExecuteControllerMethod`: This method will be executed before the controller methods to handle bulk authentication/authorization. If it returns true, the specified controller method will be executed; otherwise, the specified controller method won't be executed.
 
   ***INPUT PARAMETER:*** HttpListenerContext
