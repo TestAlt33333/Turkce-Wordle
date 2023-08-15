@@ -72,10 +72,49 @@ namespace ConsoleApp1
 
 ## Detailed Documentation
 
-#### Creation of the WebServer
+#### WebServer
+
+<br>
+
+*Creating The Server:*
 
 ```csharp
-WebServer server = new WebServer(string URLPrefix);
+WebServer server = new WebServer(string RootURL);
 ```
 
-> * **string URLPrefix:** The host name with scheme, subdomain *(optional)* and port *(optional)* *[Examples: "http://localhost:8080/", "https://test.testdomain.com/"]*
+* **string RootURL:** The host name with scheme, subdomain *(optional)* and port *(optional)* *[Examples: "http://localhost:8080/", "https://test.testdomain.com/"]*
+
+<br>
+
+*Starting The Server:*
+
+```csharp
+server.Start();
+```
+
+<br>
+
+*Stopping The Server:*
+
+```csharp
+server.Stop();
+```
+
+<br>
+
+*Adding Controller Class To The Server:*
+
+```csharp
+server.AddController<T>(PreExecuteControllerMethod PreExecute = null);
+```
+
+* **T:** The Controller Class
+* **PreExecuteControllerMethod PreExecute (Optional):** PreExecute method for this controller (This method will be executed before the controller methods to handle bulk authentication/authorization. If it returns true, the specified controller method will be executed; otherwise, the specified controller method won't be executed)
+  <br>
+* **RETURNS: Added endpoint count (int)**
+<br>
+
+##### WebServer Events
+
+* `WebServer.On404NotFound`: This event that will be invoked when a user sends a request to an undefined path. Use this event to create custom 405 response.
+* `WebServer.On405MethodNotAllolwed`: The event that will be invoked when a user sends a request with an invalid http method. Use this event to create custom 405 response.
